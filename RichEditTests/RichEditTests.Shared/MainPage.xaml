@@ -1,0 +1,23 @@
+﻿<Page x:Class="RichEditTests.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:RichEditTests"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:richtext="using:kahua.host.uno.control.richtext"
+      mc:Ignorable="d">
+
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Text="Hello, world!"
+                   FontSize="30"
+                   Margin="20"/>
+        <richtext:RichTextFieldControlView HorizontalAlignment="Left"
+                                           Height="350"
+                                           Width="500"
+                                           Margin="20" />
+        <richtext:RichTextFieldControlView HorizontalAlignment="Left"
+                                           Height="350"
+                                           Width="500"
+                                           Margin="20" />
+    </StackPanel>
+</Page>
