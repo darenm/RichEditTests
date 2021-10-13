@@ -18,6 +18,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)control\quill\QuillRichTextControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)control\quill\QuillRichTextFieldControlView.xaml.cs">
+      <DependentUpon>QuillRichTextFieldControlView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)control\richtext\RichTextControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)control\richtext\RichTextFieldControlView.xaml.cs">
       <DependentUpon>RichTextFieldControlView.xaml</DependentUpon>
@@ -27,6 +31,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)control\quill\QuillRichTextFieldControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)control\richtext\RichTextFieldControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

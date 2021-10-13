@@ -5,19 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:richtext="using:kahua.host.uno.control.richtext"
+      xmlns:quill="using:RichEditTests.control.quill"
       mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Hello, world!"
-                   FontSize="30"
-                   Margin="20"/>
-        <richtext:RichTextFieldControlView HorizontalAlignment="Left"
-                                           Height="350"
-                                           Width="500"
-                                           Margin="20" />
-        <richtext:RichTextFieldControlView HorizontalAlignment="Left"
-                                           Height="350"
-                                           Width="500"
-                                           Margin="20" />
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <TextBlock Text="Hello, world!"
+                       FontSize="30"
+                       Margin="20" />
+            <!--<richtext:RichTextFieldControlView HorizontalAlignment="Left"
+                                               Height="350"
+                                               Width="500"
+                                               Margin="20" />-->
+            <quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
+                                                 Background="White"
+                                                 Width="500"
+                                                 Margin="20" />
+            <!--<quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
+                                                 IsEnabled="True"
+                                                 Background="White"
+                                                 Width="500"
+                                                 Margin="20" />-->
+        </StackPanel>
+    </ScrollViewer>
 </Page>

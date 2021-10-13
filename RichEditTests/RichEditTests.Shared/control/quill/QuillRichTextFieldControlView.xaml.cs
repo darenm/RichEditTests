@@ -1,49 +1,48 @@
-﻿//using kahua.host.uno.ui.controls.text.richtext;
-//using kahua.host.uno.utility;
-//using kahua.ktree.control.text.richtext;
-//using kahua.ktree.hub.item.component;
-//using kahua.ktree.view;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace kahua.host.uno.control.richtext
+namespace RichEditTests.control.quill
 {
-    public sealed partial class RichTextFieldControlView : UserControl
+    public sealed partial class QuillRichTextFieldControlView : UserControl
     {
         private bool _isPreview = false;
         private int _heightRichText = 300;
         private bool _isDarkMode = false;
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-           "Value", typeof(string), typeof(RichTextFieldControlView), new PropertyMetadata(null));
+           "Value", typeof(string), typeof(QuillRichTextFieldControlView), new PropertyMetadata(null));
 
         public string Value
         {
             get => (string)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
         }
-        //private RichTextViewModel _richTextViewModels { get; set; }
-        //public RichTextComponent _richTextComponents { get; set; }
 
-        public RichTextFieldControlView()
+        public QuillRichTextFieldControlView()
         {
             this.InitializeComponent();
-            Loaded += RichTextFieldControlView_Loaded;
-            Unloaded += RichTextFieldControlView_Unloaded;
 
-            DataContextChanged += RichTextFieldControlView_DataContextChanged;
+            Loaded += QuillRichTextFieldControlView_Loaded;
+            Unloaded += QuillRichTextFieldControlView_Unloaded;
+
+            DataContextChanged += QuillRichTextFieldControlView_DataContextChanged;
         }
 
-       
-
-        private void RichTextFieldControlView_DataContextChanged(DependencyObject sender, DataContextChangedEventArgs args)
+        private void QuillRichTextFieldControlView_DataContextChanged(DependencyObject sender, DataContextChangedEventArgs args)
         {
             //if (args.NewValue is RichTextViewModel richTextViewModel && _richTextViewModels == null)
             //{
@@ -60,7 +59,7 @@ namespace kahua.host.uno.control.richtext
             //        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
             //        Source = _richTextViewModels
             //    };
-            //    this.SetBinding(RichTextFieldControlView.ValueProperty, dataContextBinding);
+            //    this.SetBinding(QuillRichTextFieldControlView.ValueProperty, dataContextBinding);
 
             //}
             //else if(args.NewValue is RichTextComponent richTextComponents && _richTextComponents == null)
@@ -79,11 +78,11 @@ namespace kahua.host.uno.control.richtext
             //        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
             //        Source = _richTextComponents
             //    };
-            //    this.SetBinding(RichTextFieldControlView.ValueProperty, dataContextBinding);
+            //    this.SetBinding(QuillRichTextFieldControlView.ValueProperty, dataContextBinding);
             //}
         }
 
-        private void RichTextFieldControlView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void QuillRichTextFieldControlView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
 #if __WASM__
             var dataContextBinding = new Binding
@@ -93,16 +92,15 @@ namespace kahua.host.uno.control.richtext
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
                 Source = this
             };
-            RichTextControl richTextControl = new RichTextControl();
-            richTextControl.Height = 300;
-            richTextControl.JSRichTextIsReadOnly = _isPreview;
-            richTextControl.JSRichTextHeight = _heightRichText;
-            richTextControl.JSRichTextDarkMode = _isDarkMode;
-            richTextControl.SetBinding(RichTextControl.ValueProperty, dataContextBinding);
-            richTextControl.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
-            richTextControl.LinkInvoked += RichTextControl_LinkInvoked;
-            richTextControl.IsEnabled = true;
-            container.Children.Add(richTextControl);
+            QuillRichTextControl QuillRichTextControl = new QuillRichTextControl();
+            QuillRichTextControl.Height = 300;
+            QuillRichTextControl.JSRichTextIsReadOnly = _isPreview;
+            QuillRichTextControl.JSRichTextHeight = _heightRichText;
+            QuillRichTextControl.JSRichTextDarkMode = _isDarkMode;
+            QuillRichTextControl.SetBinding(QuillRichTextControl.ValueProperty, dataContextBinding);
+            QuillRichTextControl.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
+            QuillRichTextControl.LinkInvoked += QuillRichTextControl_LinkInvoked;
+            container.Children.Add(QuillRichTextControl);
 #else
             WebView webView = new WebView();
             webView.Source = new System.Uri("ms-appx-web:///control/richtext/page/index.html");
@@ -114,7 +112,7 @@ namespace kahua.host.uno.control.richtext
 #endif
         }
 
-        private void RichTextControl_LinkInvoked(object sender, string e)
+        private void QuillRichTextControl_LinkInvoked(object sender, string e)
         {
             //_richTextViewModels?.InvokeLinkCommand.Execute(e);
             //_richTextComponents?.InvokeLinkCommand.Execute(e);
@@ -140,13 +138,13 @@ namespace kahua.host.uno.control.richtext
 
         private void WebView_ScriptNotify(object sender, NotifyEventArgs e)
         {
-            if(Value != null)
+            if (Value != null)
             {
                 Value = e.Value;
             }
         }
 
-        private void RichTextFieldControlView_Unloaded(object sender, RoutedEventArgs e)
+        private void QuillRichTextFieldControlView_Unloaded(object sender, RoutedEventArgs e)
         {
             container.Children.Clear();
             //_richTextViewModels = null;
@@ -156,3 +154,4 @@ namespace kahua.host.uno.control.richtext
         }
     }
 }
+

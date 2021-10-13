@@ -1,6 +1,6 @@
 var defaultStyle;
 var IsReadOnly = false;
-var Text = "";
+var InitialText = "";
 var Height = 0;
 var IsDarkMode = false;
 var notifyViewModel;
@@ -11,7 +11,7 @@ function initAllControls(isReadOnly, text, height, isDarkMode) {
     configRichTextBoxForWASM(jQuery);
 
     IsReadOnly = isReadOnly;
-    Text = text;
+    InitialText = text;
     Height = height;
     IsDarkMode = isDarkMode;
 

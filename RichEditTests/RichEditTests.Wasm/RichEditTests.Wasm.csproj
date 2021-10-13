@@ -29,6 +29,9 @@
     <None Remove="WasmCSS\site.css" />
     <None Remove="WasmScripts\jquery.min.js" />
     <None Remove="WasmScripts\jquery.richtext.js" />
+    <None Remove="WasmScripts\quill.config.js" />
+    <None Remove="WasmScripts\quill.loader.js" />
+    <None Remove="WasmScripts\quill.src.js" />
     <None Remove="WasmScripts\richtext.config.js" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +42,9 @@
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />
     <EmbeddedResource Include="WasmScripts\jquery.min.js" />
     <EmbeddedResource Include="WasmScripts\jquery.richtext.js" />
+    <EmbeddedResource Include="WasmScripts\quill.config.js" />
+    <EmbeddedResource Include="WasmScripts\quill.loader.js" />
+    <EmbeddedResource Include="WasmScripts\quill.src.js" />
     <EmbeddedResource Include="WasmScripts\richtext.config.js" />
   </ItemGroup>
   <ItemGroup>

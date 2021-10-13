@@ -15,11 +15,11 @@ using Uno.Extensions;
 using Uno.UI.Runtime.WebAssembly;
 #endif
 
-namespace kahua.host.uno.control.richtext
+namespace RichEditTests.control.quill
 {
-    public class RichTextControl : Control
+    public class QuillRichTextControl :  Control
     {
-        private string _containerID;
+        private readonly string _containerID;
 
         public bool JSRichTextIsReadOnly { get; set; }
         public int JSRichTextHeight { get; set; }
@@ -27,7 +27,7 @@ namespace kahua.host.uno.control.richtext
         public event EventHandler<string> LinkInvoked = null;
 
         public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
-           "Value", typeof(string), typeof(RichTextControl), new PropertyMetadata(null));
+           "Value", typeof(string), typeof(QuillRichTextControl), new PropertyMetadata(null));
 
         public string Value
         {
@@ -35,12 +35,17 @@ namespace kahua.host.uno.control.richtext
             set => SetValue(ValueProperty, value);
         }
 #if __WASM__
-        public RichTextControl()
+        public QuillRichTextControl()
         {
-            _containerID = $"containerRichText{CalculateNonce()}";
-            this.SetHtmlContent($"<div id='{_containerID}' class='page-wrapper box-content'><textarea class='content' name='example'></textarea></div>");
+            _containerID = $"quillRichText{CalculateNonce()}";
+            //_containerID = "editor";
+
+            // Load Quill using JavaScript
+
+            this.SetHtmlContent($"<div id='{_containerID}'>This is content <b>in bold!</b></div>");
             Loaded += RichTextControl_Loaded;
         }
+
 
         private void RichTextControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -49,19 +54,19 @@ namespace kahua.host.uno.control.richtext
             {
                 reformatString = Value.ToString().Replace("\"", "\'").Replace("\n", "").Replace("\r", "").Replace("\t", "");
             }
-            var javascript = $"initAllControls({JSRichTextIsReadOnly.ToString().ToLower()}, \"{reformatString.ToString()}\", {JSRichTextHeight.ToString()}, {JSRichTextDarkMode.ToString().ToLower()}, \"{_containerID}\");";
-            this.ExecuteJavascript(javascript);
-            if(!JSRichTextIsReadOnly)
-            {
-                this.RegisterHtmlCustomEventHandler("complexEvent", OnComplexEvent, isDetailJson: false);
-            }
+            var javascript = $"initQuillInstance({JSRichTextIsReadOnly.ToString().ToLower()}, \"{reformatString}\", {JSRichTextHeight}, {JSRichTextDarkMode.ToString().ToLower()}, \"{_containerID}\");";
+            var result = this.ExecuteJavascript(javascript);
+            //if (!JSRichTextIsReadOnly)
+            //{
+            //    this.RegisterHtmlCustomEventHandler("complexEvent", OnComplexEvent, isDetailJson: false);
+            //}
 
-            this.RegisterHtmlCustomEventHandler("urlEvent", OnUrlEvent, isDetailJson: false);
+            //this.RegisterHtmlCustomEventHandler("urlEvent", OnUrlEvent, isDetailJson: false);
         }
-        
+
         private void OnComplexEvent(object sender, HtmlCustomEventArgs e)
         {
-           Value = e.Detail;
+            Value = e.Detail;
         }
 
         private void OnUrlEvent(object sender, HtmlCustomEventArgs e)
@@ -84,7 +89,4 @@ namespace kahua.host.uno.control.richtext
         }
 
     }
-
-
-
 }

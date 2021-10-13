@@ -1217,7 +1217,7 @@ function configRichTextBoxForWASM($) {
                     toolbar.css('display', 'none');
                 }
                 //ColorTheme();
-                content.html(Text);
+                content.html(InitialText);
             }
             catch (err) {
                 //console.log(err);
