@@ -25,6 +25,7 @@
   <ItemGroup>
     <None Remove="Assets\fontawesome-webfont.ttf" />
     <None Remove="WasmCSS\font-awesome.css" />
+    <None Remove="WasmCSS\quill.snow.css" />
     <None Remove="WasmCSS\richtext.min.css" />
     <None Remove="WasmCSS\site.css" />
     <None Remove="WasmScripts\jquery.min.js" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <EmbeddedResource Include="WasmCSS\font-awesome.css" />
     <EmbeddedResource Include="WasmCSS\Fonts.css" />
+    <EmbeddedResource Include="WasmCSS\quill.snow.css" />
     <EmbeddedResource Include="WasmCSS\richtext.min.css" />
     <EmbeddedResource Include="WasmCSS\site.css" />
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />

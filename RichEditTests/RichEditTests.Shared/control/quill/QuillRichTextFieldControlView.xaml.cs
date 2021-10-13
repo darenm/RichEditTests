@@ -100,6 +100,7 @@ namespace RichEditTests.control.quill
             QuillRichTextControl.SetBinding(QuillRichTextControl.ValueProperty, dataContextBinding);
             QuillRichTextControl.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
             QuillRichTextControl.LinkInvoked += QuillRichTextControl_LinkInvoked;
+            QuillRichTextControl.IsEnabled = true;
             container.Children.Add(QuillRichTextControl);
 #else
             WebView webView = new WebView();

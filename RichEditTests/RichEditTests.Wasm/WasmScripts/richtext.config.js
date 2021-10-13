@@ -155,6 +155,7 @@ function initAllControls(isReadOnly, text, height, isDarkMode) {
     notifyViewModel = function () {
         var _htmlElement = document.getElementById("containerRichText");
         _htmlElement.dispatchEvent(new CustomEvent("complexEvent", { bubbles: true, detail: contentValue }));
+        console.log('Content: ' + contentValue);
     }
 
     notifyUrlViewModel = function (url) {

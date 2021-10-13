@@ -38,11 +38,7 @@ namespace RichEditTests.control.quill
         public QuillRichTextControl()
         {
             _containerID = $"quillRichText{CalculateNonce()}";
-            //_containerID = "editor";
-
-            // Load Quill using JavaScript
-
-            this.SetHtmlContent($"<div id='{_containerID}'>This is content <b>in bold!</b></div>");
+            this.SetHtmlContent($"<div id='{_containerID}' class='page-wrapper box-content'>Pointer Out</div>");
             Loaded += RichTextControl_Loaded;
         }
 

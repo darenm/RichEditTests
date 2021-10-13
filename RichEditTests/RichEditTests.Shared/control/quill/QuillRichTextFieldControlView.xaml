@@ -12,27 +12,7 @@
     <Grid x:Name="ElementRoot"
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch">
-        <Grid Margin="1,1,1,1"
-              HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid x:Name="container"
-                  Grid.Row="2"
-                  Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-            </Grid>
+        <Grid x:Name="container">
         </Grid>
     </Grid>
 </UserControl>

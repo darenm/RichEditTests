@@ -29,9 +29,10 @@
         ['clean']                                         // remove formatting button
     ];
 
+    console.log('Quill container ID:' + containerID);
     var container = document.getElementById(containerID);
     var editor = new window.quill(container, {
-        debug: "log",
+        debug: "info",
         modules: {
             toolbar: toolbarOptions
         },
@@ -39,7 +40,16 @@
         readOnly: false,
         theme: 'snow'
     });
-    editor.enable();
+    editor.setText(text);
+
+    editor.on('text-change', function (delta, oldDelta, source) {
+        if (source == 'api') {
+            console.log("An API call triggered this change. Delta: " + delta);
+        } else if (source == 'user') {
+            console.log("A user action triggered this change. Delta: " + delta);
+            console.log(container.querySelector(".ql-editor").innerHTML);
+        }
+    });
 
     return editor;
 }

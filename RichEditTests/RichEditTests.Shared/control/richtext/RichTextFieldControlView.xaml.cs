@@ -41,8 +41,6 @@ namespace kahua.host.uno.control.richtext
             DataContextChanged += RichTextFieldControlView_DataContextChanged;
         }
 
-       
-
         private void RichTextFieldControlView_DataContextChanged(DependencyObject sender, DataContextChangedEventArgs args)
         {
             //if (args.NewValue is RichTextViewModel richTextViewModel && _richTextViewModels == null)
@@ -104,13 +102,13 @@ namespace kahua.host.uno.control.richtext
             richTextControl.IsEnabled = true;
             container.Children.Add(richTextControl);
 #else
-            WebView webView = new WebView();
-            webView.Source = new System.Uri("ms-appx-web:///control/richtext/page/index.html");
-            webView.Height = 300;
-            webView.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
-            container.Children.Add(webView);
-            webView.LoadCompleted += WebView_LoadCompleted;
-            webView.ScriptNotify += WebView_ScriptNotify;
+            //WebView webView = new WebView();
+            //webView.Source = new System.Uri("ms-appx-web:///control/richtext/page/index.html");
+            //webView.Height = 300;
+            //webView.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch;
+            //container.Children.Add(webView);
+            //webView.LoadCompleted += WebView_LoadCompleted;
+            //webView.ScriptNotify += WebView_ScriptNotify;
 #endif
         }
 
@@ -120,31 +118,31 @@ namespace kahua.host.uno.control.richtext
             //_richTextComponents?.InvokeLinkCommand.Execute(e);
         }
 
-        private void WebView_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-            executeJSRequestAsync(sender as WebView);
-        }
+        //private void WebView_LoadCompleted(object sender, NavigationEventArgs e)
+        //{
+        //    executeJSRequestAsync(sender as WebView);
+        //}
 
-        public async void executeJSRequestAsync(WebView webView)
-        {
-            string reformatString = string.Empty;
-            if (Value != null)
-            {
-                reformatString = Value.ToString().Replace("\"", "\'").Replace("\n", "").Replace("\r", "").Replace("\t", "");
-            }
+        //public async void executeJSRequestAsync(WebView webView)
+        //{
+        //    string reformatString = string.Empty;
+        //    if (Value != null)
+        //    {
+        //        reformatString = Value.ToString().Replace("\"", "\'").Replace("\n", "").Replace("\r", "").Replace("\t", "");
+        //    }
 
-            var parameters = new string[] { _isPreview.ToString().ToLower(), reformatString, _heightRichText.ToString(), _isDarkMode.ToString().ToLower() };
+        //    var parameters = new string[] { _isPreview.ToString().ToLower(), reformatString, _heightRichText.ToString(), _isDarkMode.ToString().ToLower() };
 
-            await webView.InvokeScriptAsync("setControl", parameters);
-        }
+        //    await webView.InvokeScriptAsync("setControl", parameters);
+        //}
 
-        private void WebView_ScriptNotify(object sender, NotifyEventArgs e)
-        {
-            if(Value != null)
-            {
-                Value = e.Value;
-            }
-        }
+        //private void WebView_ScriptNotify(object sender, NotifyEventArgs e)
+        //{
+        //    if(Value != null)
+        //    {
+        //        Value = e.Value;
+        //    }
+        //}
 
         private void RichTextFieldControlView_Unloaded(object sender, RoutedEventArgs e)
         {

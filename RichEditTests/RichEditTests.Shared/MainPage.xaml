@@ -8,24 +8,36 @@
       xmlns:quill="using:RichEditTests.control.quill"
       mc:Ignorable="d">
 
-    <ScrollViewer>
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <TextBlock Text="Hello, world!"
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+            <!--<TextBlock Text="Hello, world!"
                        FontSize="30"
-                       Margin="20" />
+                       Margin="20" />-->
             <!--<richtext:RichTextFieldControlView HorizontalAlignment="Left"
                                                Height="350"
                                                Width="500"
                                                Margin="20" />-->
-            <quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
-                                                 Background="White"
-                                                 Width="500"
-                                                 Margin="20" />
-            <!--<quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
+
+        <quill:QuillRichTextControl HorizontalAlignment="Left"
+                                             Background="White"
+                                             Width="500"
+                                    Value="This is sent from XAML"
+                                             Margin="20" />
+
+
+        <richtext:RichTextFieldControlView HorizontalAlignment="Left"
+                                           Grid.Row="1"
+                                           Height="350"
+                                           Width="500"
+                                           Margin="50" />
+
+        <!--<quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
                                                  IsEnabled="True"
                                                  Background="White"
                                                  Width="500"
                                                  Margin="20" />-->
-        </StackPanel>
-    </ScrollViewer>
+        </Grid>
 </Page>
