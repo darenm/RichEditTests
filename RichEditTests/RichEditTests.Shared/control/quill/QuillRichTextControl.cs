@@ -38,7 +38,7 @@ namespace RichEditTests.control.quill
         public QuillRichTextControl()
         {
             _containerID = $"quillRichText{CalculateNonce()}";
-            this.SetHtmlContent($"<div id='{_containerID}' class='page-wrapper box-content'>Pointer Out</div>");
+            this.SetHtmlContent($"<div id='{_containerID}' class='page-wrapper box-content' style='height: 200px;'><textarea class='content' name='example'></textarea></div>");
             Loaded += RichTextControl_Loaded;
         }
 

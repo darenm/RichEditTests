@@ -8,36 +8,45 @@
       xmlns:quill="using:RichEditTests.control.quill"
       mc:Ignorable="d">
 
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-            <!--<TextBlock Text="Hello, world!"
+        <!--<TextBlock Text="Hello, world!"
                        FontSize="30"
                        Margin="20" />-->
-            <!--<richtext:RichTextFieldControlView HorizontalAlignment="Left"
+        <!--<richtext:RichTextFieldControlView HorizontalAlignment="Left"
                                                Height="350"
                                                Width="500"
                                                Margin="20" />-->
 
-        <quill:QuillRichTextControl HorizontalAlignment="Left"
+        <quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
                                              Background="White"
                                              Width="500"
-                                    Value="This is sent from XAML"
+                                             Value="This is wrapped Quill sent from XAML"
                                              Margin="20" />
+
+        <Grid Grid.Row="1">
+            <quill:QuillRichTextControl HorizontalAlignment="Left"
+                                        Background="White"
+                                        Width="500"
+                                        Value="This is direct Quill sent from XAML"
+                                        Margin="20" />
+        </Grid>
 
 
         <richtext:RichTextFieldControlView HorizontalAlignment="Left"
-                                           Grid.Row="1"
-                                           Height="350"
+                                           Grid.Row="2"
+                                           Height="200"
                                            Width="500"
-                                           Margin="50" />
+                                           Margin="20" />
 
         <!--<quill:QuillRichTextFieldControlView HorizontalAlignment="Left"
                                                  IsEnabled="True"
                                                  Background="White"
                                                  Width="500"
                                                  Margin="20" />-->
-        </Grid>
+    </Grid>
 </Page>

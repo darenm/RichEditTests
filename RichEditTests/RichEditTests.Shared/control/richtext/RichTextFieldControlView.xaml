@@ -26,7 +26,6 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             
-            <TextBlock Text="{x:Bind Value, Mode=OneWay}"/>
             <Grid x:Name="container"
                   Grid.Row="2"
                   Grid.Column="0">

@@ -1,15 +1,7 @@
-﻿//using kahua.host.uno.ui.controls.text.richtext;
-//using kahua.host.uno.utility;
-//using kahua.ktree.control.text.richtext;
-//using kahua.ktree.hub.item.component;
-//using kahua.ktree.view;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Navigation;
+using RichEditTests.control.quill;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -43,42 +35,6 @@ namespace kahua.host.uno.control.richtext
 
         private void RichTextFieldControlView_DataContextChanged(DependencyObject sender, DataContextChangedEventArgs args)
         {
-            //if (args.NewValue is RichTextViewModel richTextViewModel && _richTextViewModels == null)
-            //{
-            //    _richTextViewModels = richTextViewModel;
-            //    var dynamic = richTextViewModel.GetAncestor<DynamicViewViewModel>();
-            //    if (dynamic?.Name.Contains("Preview") == true)
-            //    {
-            //        _isPreview = true;
-            //    }
-            //    var dataContextBinding = new Binding
-            //    {
-            //        Path = new PropertyPath("DataValue"),
-            //        Mode = BindingMode.TwoWay,
-            //        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-            //        Source = _richTextViewModels
-            //    };
-            //    this.SetBinding(RichTextFieldControlView.ValueProperty, dataContextBinding);
-
-            //}
-            //else if(args.NewValue is RichTextComponent richTextComponents && _richTextComponents == null)
-            //{
-            //    _richTextComponents = richTextComponents;
-
-            //    if(!_richTextComponents.IsEditable)
-            //    {
-            //        _isPreview = true;
-            //    }
-
-            //    var dataContextBinding = new Binding
-            //    {
-            //        Path = new PropertyPath("Value"),
-            //        Mode = BindingMode.TwoWay,
-            //        UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-            //        Source = _richTextComponents
-            //    };
-            //    this.SetBinding(RichTextFieldControlView.ValueProperty, dataContextBinding);
-            //}
         }
 
         private void RichTextFieldControlView_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -117,32 +73,6 @@ namespace kahua.host.uno.control.richtext
             //_richTextViewModels?.InvokeLinkCommand.Execute(e);
             //_richTextComponents?.InvokeLinkCommand.Execute(e);
         }
-
-        //private void WebView_LoadCompleted(object sender, NavigationEventArgs e)
-        //{
-        //    executeJSRequestAsync(sender as WebView);
-        //}
-
-        //public async void executeJSRequestAsync(WebView webView)
-        //{
-        //    string reformatString = string.Empty;
-        //    if (Value != null)
-        //    {
-        //        reformatString = Value.ToString().Replace("\"", "\'").Replace("\n", "").Replace("\r", "").Replace("\t", "");
-        //    }
-
-        //    var parameters = new string[] { _isPreview.ToString().ToLower(), reformatString, _heightRichText.ToString(), _isDarkMode.ToString().ToLower() };
-
-        //    await webView.InvokeScriptAsync("setControl", parameters);
-        //}
-
-        //private void WebView_ScriptNotify(object sender, NotifyEventArgs e)
-        //{
-        //    if(Value != null)
-        //    {
-        //        Value = e.Value;
-        //    }
-        //}
 
         private void RichTextFieldControlView_Unloaded(object sender, RoutedEventArgs e)
         {

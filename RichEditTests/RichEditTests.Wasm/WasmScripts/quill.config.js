@@ -33,6 +33,7 @@
     var container = document.getElementById(containerID);
     var editor = new window.quill(container, {
         debug: "info",
+        height: 200,
         modules: {
             toolbar: toolbarOptions
         },
